@@ -50,8 +50,74 @@ struct MersenneRNG {
 
 time_t starttime;
 
-void run_evolution(int num_strats_p1,int num_strats_p2,std::vector<double>& adjacency_weights,std::vector<double>& adjacency_weights_new, UGenerator rng, int seed_id, int pop, float p1_payoff[],float p2_payoff[],std::vector<double>& p1_strategy,std::vector<double>& p2_strategy,std::vector<double>& p1_strategy_t,std::vector<double>& p2_strategy_t,std::vector<double>& adjacency_weights_t,std::vector<int>& player1_s1_t,std::vector<int>& player2_s1_t, float base, float death_rate, int max_time, float net_discount, float strat_discount, float net_learning_speed, float strat_learning_speed, int net_symmetric, int strat_symmetric,  float net_tremble_prob, float strat_tremble_prob, std::vector<double>& strat_corr_t, std::vector<double>& perc_inters_t, std::vector<double>& p1_strat_var_t, std::vector<double>& p2_strat_var_t,std::vector<double>& p1_strat_mean_t, std::vector<double>& p2_strat_mean_t,std::vector<double>& strength_var_t, std::vector<int>& stats_time, std::vector<double>& payoffs_p1_t,std::vector<double>& payoffs_p2_t); // One randomly seeded simulation run
-void one_time_step(int num_strats_p1, int num_strats_p2,std::vector<double>& adjacency_weights, std::vector<double>& adjacency_weights_new, int t, UGenerator rng, int pop, float p1_payoff[], float p2_payoff[], std::vector<double>& p1_strategy, std::vector<double>& p1_strategy_new, std::vector<double>& p2_strategy, std::vector<double>& p2_strategy_new, long int& total_p1, long int& total_p2, float base, float net_discount, float strat_discount,float net_learning_speed, float strat_learning_speed, int net_symmetric, int strat_symmetric, float net_tremble_prob, float strat_tremble_prob, std::vector<int>& agent_seq, std::vector<double>& past_payoffs_p1,std::vector<double>& past_payoffs_p2); // Run simulation over all agents for one time step
+void run_evolution(int num_strats_p1,
+		   int num_strats_p2,
+		   std::vector<double>& adjacency_weights,
+		   std::vector<double>& adjacency_weights_new, 
+		   UGenerator rng, 
+		   int seed_id, 
+		   int pop, 
+		   float p1_payoff[],
+		   float p2_payoff[],
+		   std::vector<double>& p1_strategy,
+		   std::vector<double>& p2_strategy,
+		   std::vector<double>& p1_strategy_t,
+		   std::vector<double>& p2_strategy_t,
+		   std::vector<double>& adjacency_weights_t,
+		   std::vector<int>& player1_s1_t,
+		   std::vector<int>& player2_s1_t, 
+		   float base, 
+		   float death_rate, 
+		   int max_time, 
+		   float net_discount, 
+		   float strat_discount, 
+		   float net_learning_speed, 
+		   float strat_learning_speed, 
+		   int net_symmetric, 
+		   int strat_symmetric,  
+		   float net_tremble_prob, 
+		   float strat_tremble_prob, 
+		   std::vector<double>& strat_corr_t, 
+		   std::vector<double>& perc_inters_t, 
+		   std::vector<double>& p1_strat_var_t, 
+		   std::vector<double>& p2_strat_var_t,
+		   std::vector<double>& p1_strat_mean_t, 
+		   std::vector<double>& p2_strat_mean_t,
+		   std::vector<double>& strength_var_t, 
+		   std::vector<int>& stats_time, 
+		   std::vector<double>& payoffs_p1_t,
+		   std::vector<double>& payoffs_p2_t
+		   ); // One randomly seeded simulation run
+
+void one_time_step(int num_strats_p1, 
+		   int num_strats_p2,
+		   std::vector<double>& adjacency_weights, 
+		   std::vector<double>& adjacency_weights_new, 
+		   int t, 
+		   UGenerator rng, 
+		   int pop, 
+		   float p1_payoff[], 
+		   float p2_payoff[], 
+		   std::vector<double>& p1_strategy, 
+		   std::vector<double>& p1_strategy_new, 
+		   std::vector<double>& p2_strategy, 
+		   std::vector<double>& p2_strategy_new, 
+		   long int& total_p1, 
+		   long int& total_p2, 
+		   float base, 
+		   float net_discount, 
+		   float strat_discount,
+		   float net_learning_speed, 
+		   float strat_learning_speed, 
+		   int net_symmetric, 
+		   int strat_symmetric, 
+		   float net_tremble_prob, 
+		   float strat_tremble_prob, 
+		   std::vector<int>& agent_seq, 
+		   std::vector<double>& past_payoffs_p1,
+		   std::vector<double>& past_payoffs_p2
+		   ); // Run simulation over all agents for one time step
+
 int * intdup(int const * src, size_t len);
 long * longdup(long const * src, size_t len);
 float * floatdup(float const * src, size_t len);
