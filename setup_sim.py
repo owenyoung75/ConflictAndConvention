@@ -139,7 +139,24 @@ def setup_simulation(payoffs,pop_list_in = [20],
         os.makedirs(game + "_Output_Data")
 
     # Get all combinations of parameter lists above
-    param_combos = list(product(payoffs,pop_list_in,network_list_in,init_strategy_str_list_in,init_net_str_list_in,init_cond_hawk_p1_list_in,init_cond_hawk_p2_list_in,death_rate_list_in,net_discount_list_in,strat_discount_list_in,net_speed_list_in,strat_speed_list_in,net_sym_list_in,strat_sym_list_in, net_tremble_list_in,strat_tremble_list_in))
+    param_combos = list(product(payoffs,
+                                pop_list_in,
+                                network_list_in,
+                                init_strategy_str_list_in,
+                                init_net_str_list_in,
+                                init_cond_hawk_p1_list_in,
+                                init_cond_hawk_p2_list_in,
+                                death_rate_list_in,
+                                net_discount_list_in,
+                                strat_discount_list_in,
+                                net_speed_list_in,
+                                strat_speed_list_in,
+                                net_sym_list_in,
+                                strat_sym_list_in,
+                                net_tremble_list_in,
+                                strat_tremble_list_in
+                               )
+                       )
     
     total_files = 0
     
@@ -191,7 +208,28 @@ def setup_simulation(payoffs,pop_list_in = [20],
             pd.DataFrame(init_p1strategy_fill_in).to_csv(initw_folder + "P1_InitWeights_" + key + ".csv",header=None,index=False)
             pd.DataFrame(init_p2strategy_fill_in).to_csv(initw_folder + "P2_InitWeights_" + key + ".csv",header=None,index=False)
             
-            input_params = bracket_string.format(base_in,num_strats_p1,num_strats_p2,pop_in,tmax_in,network_in,init_strategy_str_in,init_net_str_in,init_net_fill_in,death_rate_in,net_discount_in,strat_discount_in,net_speed_in,strat_speed_in,net_sym_in,strat_sym_in,net_tremble,strat_tremble,game,data_description,key)
+            input_params = bracket_string.format(base_in,
+                                                 num_strats_p1,
+                                                 num_strats_p2,
+                                                 pop_in,
+                                                 tmax_in,
+                                                 network_in,
+                                                 init_strategy_str_in,
+                                                 init_net_str_in,
+                                                 init_net_fill_in,
+                                                 death_rate_in,
+                                                 net_discount_in,
+                                                 strat_discount_in,
+                                                 net_speed_in,
+                                                 strat_speed_in,
+                                                 net_sym_in,
+                                                 strat_sym_in,
+                                                 net_tremble,
+                                                 strat_tremble,
+                                                 game,
+                                                 data_description,
+                                                 key
+                                                )
             
             if input_params not in input_params_list:
                 input_params_list.append(input_params)
