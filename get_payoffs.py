@@ -29,7 +29,12 @@ import numpy as np
     ## Requires user_p2_payoff (list of lists, set up as [[0,x_1],[1, y_1]] with y_1 >= x_1)
     """
 
-def get_payoffs(payoff_type,dh_spacing=0.05,alpha_list = [0.1],user_p1_payoff=[[0,1],[0.2,0.6]],user_p2_payoff=[[0,0.2],[1,0.6]]):
+def get_payoffs(payoff_type,
+                dh_spacing=0.05,
+                alpha_list = [0.1],
+                user_p1_payoff=[[0,1],[0.2,0.6]],
+                user_p2_payoff=[[0,0.2],[1,0.6]]
+               ):
     # Initialize list of payoffs for p1 (visitor) and p2 (host)
     # P1 PAYOFFS IN CCDN ARE [[0,1],[x_1, y_1]] with y_1 >= x_1
     # P1 PAYOFFS IN CCDN ARE [[0,x_2],[1, y_2]] with y_2 >= x_2
