@@ -28,8 +28,20 @@ full_input_list = ['Base','Num_Strats_P1','Num_Strats_P2','Pop','TMax','Net_in',
 num_input_vars = len(full_input_list)
 bracket_string = "{} " * (num_input_vars-1) + "{}\n"
 
-def setup_simulation(payoffs,pop_list_in = [20],init_strategy_str_list_in = ["uniform"],net_discount_list_in = [0.99],strat_discount_list_in = [0.99],net_speed_list_in = [1],
-                   strat_speed_list_in = [1],net_tremble_list_in = [0.01], strat_tremble_list_in = [0.01],init_cond_hawk_p1_list_in = [50],init_cond_hawk_p2_list_in = [50],payoff_type = "User",run_now=1,num_seeds = 1):
+def setup_simulation(payoffs,pop_list_in = [20],
+                     init_strategy_str_list_in = ["uniform"],
+                     net_discount_list_in = [0.99],
+                     strat_discount_list_in = [0.99],
+                     net_speed_list_in = [1],
+                     strat_speed_list_in = [1],
+                     net_tremble_list_in = [0.01], 
+                     strat_tremble_list_in = [0.01],
+                     init_cond_hawk_p1_list_in = [50],
+                     init_cond_hawk_p2_list_in = [50],
+                     payoff_type = "User",
+                     run_now=1,
+                     num_seeds = 1
+                    ):
     """ 
     THE FOLLOWING SETS ALL INPUT PARAMETERS FOR MODEL
     
