@@ -68,4 +68,18 @@ payoffs = get_payoffs(payoff_type,user_p1_payoff = user_p1_payoff, user_p2_payof
     Run simulation with given parameters
     """
 
-setup_simulation(payoffs, pop_list_in, init_strategy_str_list_in, net_discount_list_in, strat_discount_list_in, net_speed_list_in, strat_speed_list_in,net_tremble_list_in, strat_tremble_list_in, init_cond_hawk_p1_list_in, init_cond_hawk_p2_list_in, payoff_type,run_now,num_seeds)
+setup_simulation(payoffs, 
+                 pop_list_in, 
+                 init_strategy_str_list_in, 
+                 net_discount_list_in, 
+                 strat_discount_list_in, 
+                 net_speed_list_in, 
+                 strat_speed_list_in,
+                 net_tremble_list_in, 
+                 strat_tremble_list_in, 
+                 init_cond_hawk_p1_list_in, 
+                 init_cond_hawk_p2_list_in, 
+                 payoff_type,
+                 run_now,
+                 num_seeds
+                )
