@@ -62,7 +62,10 @@ if payoff_type == "User":
 
 # Get Payoffs 
 # See "get_payoffs.py" to change arguments from defaults
-payoffs = get_payoffs(payoff_type,user_p1_payoff = user_p1_payoff, user_p2_payoff = user_p2_payoff)
+payoffs = get_payoffs(payoff_type,
+                      user_p1_payoff = user_p1_payoff, 
+                      user_p2_payoff = user_p2_payoff
+                     )
 
 """
     Run simulation with given parameters
