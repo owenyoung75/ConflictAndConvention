@@ -249,5 +249,12 @@ def setup_simulation(payoffs,pop_list_in = [20],
     total_files = int(ind/file_lines) + 1
     if run_now:
         for run_ind in range(total_files):
-            test_in2 = ["./DynNet_HawkDoveSim","1","HD", data_description, str(run_ind), str(num_seeds), "0", "0", "0", "0", "0", "0"]
+            test_in2 = ["./DynNet_HawkDoveSim",
+                        "1",
+                        "HD", 
+                        data_description, 
+                        str(run_ind), 
+                        str(num_seeds), 
+                        "0", "0", "0", "0", "0", "0"
+                       ]
             Popen(test_in2,shell=False)
