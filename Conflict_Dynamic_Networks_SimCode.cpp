@@ -334,7 +334,30 @@ int main(int argc, char *argv[])
             //printf("%s\n",words[run_num]);
             
             // Read in one line
-            sscanf(words[run_num],"%f %d %d %d %d %s %s %s %f %f %f %f %f %f %d %d %f %f %s %s %s", &base,&num_strats_p1,&num_strats_p2,&pop,&max_time,network,init_strategy_str,init_net_str,&init_net_fill,&death_rate, &net_discount, &strat_discount, &net_learning_speed, &strat_learning_speed, &net_symmetric, &strat_symmetric, &net_tremble_prob, &strat_tremble_prob, game, sim_description, key);
+            sscanf(words[run_num],
+		   "%f %d %d %d %d %s %s %s %f %f %f %f %f %f %d %d %f %f %s %s %s", 
+		   &base,
+		   &num_strats_p1,
+		   &num_strats_p2,
+		   &pop,
+		   &max_time,
+		   network,
+		   init_strategy_str,
+		   init_net_str,
+		   &init_net_fill,
+		   &death_rate, 
+		   &net_discount, 
+		   &strat_discount, 
+		   &net_learning_speed, 
+		   &strat_learning_speed, 
+		   &net_symmetric, 
+		   &strat_symmetric, 
+		   &net_tremble_prob, 
+		   &strat_tremble_prob, 
+		   game, 
+		   sim_description, 
+		   key
+		  );
             
             //printf("%f\n",net_discount);
             //printf("%f\n",net_tremble_prob);
@@ -482,7 +505,13 @@ int main(int argc, char *argv[])
             }
             
             // Check if output files already exist, if they do, skip this simulation
-            if( (access(out_file_adj, F_OK ) != -1) && (access(out_file_p1t, F_OK ) != -1) && (access(out_file_p2t, F_OK ) != -1) && (access(out_file_p1_s1_t, F_OK ) != -1) && (access(out_file_p2_s1_t, F_OK ) != -1) && (access(out_file_stats, F_OK ) != -1))
+            if((access(out_file_adj, F_OK ) != -1) && 
+	       (access(out_file_p1t, F_OK ) != -1) && 
+	       (access(out_file_p2t, F_OK ) != -1) && 
+	       (access(out_file_p1_s1_t, F_OK ) != -1) && 
+	       (access(out_file_p2_s1_t, F_OK ) != -1) && 
+	       (access(out_file_stats, F_OK ) != -1)
+	      )
             {
                 continue;
             } else // If output files don't yet exist, run this simulation
@@ -597,7 +626,44 @@ int main(int argc, char *argv[])
                 
                 
                 // Run simulation with given parameters, trackers, etc.
-                run_evolution(num_strats_p1,num_strats_p2, adjacency_weights, adjacency_weights_new, rng, seed_ind, pop, p1_payoff,p2_payoff,p1_strategy,p2_strategy,*p1_strategy_t,*p2_strategy_t,*adjacency_weights_t,player1_s1_t,player2_s1_t,base,death_rate, max_time, net_discount, strat_discount, net_learning_speed, strat_learning_speed, net_symmetric, strat_symmetric, net_tremble_prob, strat_tremble_prob, *strat_corr_t, *perc_inters_t, *p1_strat_var_t, *p2_strat_var_t,*p1_strat_mean_t, *p2_strat_mean_t,*strength_var_t, *stats_time, *payoffs_p1_t,*payoffs_p2_t);
+                run_evolution(num_strats_p1,
+			      num_strats_p2, 
+			      adjacency_weights, 
+			      adjacency_weights_new, 
+			      rng, 
+			      seed_ind, 
+			      pop, 
+			      p1_payoff,
+			      p2_payoff,
+			      p1_strategy,
+			      p2_strategy,
+			      *p1_strategy_t,
+			      *p2_strategy_t,
+			      *adjacency_weights_t,
+			      player1_s1_t,
+			      player2_s1_t,
+			      base,
+			      death_rate, 
+			      max_time, 
+			      net_discount, 
+			      strat_discount, 
+			      net_learning_speed, 
+			      strat_learning_speed, 
+			      net_symmetric, 
+			      strat_symmetric, 
+			      net_tremble_prob, 
+			      strat_tremble_prob, 
+			      *strat_corr_t, 
+			      *perc_inters_t, 
+			      *p1_strat_var_t, 
+			      *p2_strat_var_t,
+			      *p1_strat_mean_t, 
+			      *p2_strat_mean_t,
+			      *strength_var_t, 
+			      *stats_time, 
+			      *payoffs_p1_t,
+			      *payoffs_p2_t
+			     );
                 
                 
                 // Variables for output
@@ -938,7 +1004,44 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void run_evolution(int num_strats_p1,int num_strats_p2, std::vector<double>& adjacency_weights, std::vector<double>& adjacency_weights_new, UGenerator rng, int seed_id, int pop, float p1_payoff[], float p2_payoff[], std::vector<double>& p1_strategy, std::vector<double>& p2_strategy,std::vector<double>& p1_strategy_t, std::vector<double>& p2_strategy_t,std::vector<double>& adjacency_weights_t,std::vector<int>& player1_s1_t,std::vector<int>& player2_s1_t, float base, float death_rate, int max_time, float net_discount, float strat_discount, float net_learning_speed, float strat_learning_speed, int net_symmetric, int strat_symmetric, float net_tremble_prob, float strat_tremble_prob, std::vector<double>& strat_corr_t,std::vector<double>& perc_inters_t, std::vector<double>& p1_strat_var_t, std::vector<double>& p2_strat_var_t,std::vector<double>& p1_strat_mean_t, std::vector<double>& p2_strat_mean_t,std::vector<double>& strength_var_t, std::vector<int>& stats_time, std::vector<double>& payoffs_p1_t,std::vector<double>& payoffs_p2_t)
+void run_evolution(int num_strats_p1,
+		   int num_strats_p2, 
+		   std::vector<double>& adjacency_weights, 
+		   std::vector<double>& adjacency_weights_new, 
+		   UGenerator rng, 
+		   int seed_id, 
+		   int pop, 
+		   float p1_payoff[], 
+		   float p2_payoff[], 
+		   std::vector<double>& p1_strategy, 
+		   std::vector<double>& p2_strategy,
+		   std::vector<double>& p1_strategy_t, 
+		   std::vector<double>& p2_strategy_t,
+		   std::vector<double>& adjacency_weights_t,
+		   std::vector<int>& player1_s1_t,
+		   std::vector<int>& player2_s1_t, 
+		   float base, 
+		   float death_rate, 
+		   int max_time, 
+		   float net_discount, 
+		   float strat_discount, 
+		   float net_learning_speed, 
+		   float strat_learning_speed, 
+		   int net_symmetric, 
+		   int strat_symmetric, 
+		   float net_tremble_prob, 
+		   float strat_tremble_prob, 
+		   std::vector<double>& strat_corr_t,
+		   std::vector<double>& perc_inters_t, 
+		   std::vector<double>& p1_strat_var_t, 
+		   std::vector<double>& p2_strat_var_t,
+		   std::vector<double>& p1_strat_mean_t, 
+		   std::vector<double>& p2_strat_mean_t,
+		   std::vector<double>& strength_var_t, 
+		   std::vector<int>& stats_time, 
+		   std::vector<double>& payoffs_p1_t,
+		   std::vector<double>& payoffs_p2_t
+		   )
 /* Single simulation code for evolutionary game theory model
  */
 {
@@ -1116,7 +1219,34 @@ void run_evolution(int num_strats_p1,int num_strats_p2, std::vector<double>& adj
     
 }
 
-void one_time_step(int num_strats_p1,int num_strats_p2, std::vector<double>& adjacency_weights, std::vector<double>& adjacency_weights_new, int t, UGenerator rng, int pop, float p1_payoff[], float p2_payoff[], std::vector<double>& p1_strategy, std::vector<double>& p1_strategy_new, std::vector<double>& p2_strategy, std::vector<double>& p2_strategy_new, long int& total_p1, long int& total_p2, float base, float net_discount, float strat_discount, float net_learning_speed, float strat_learning_speed, int net_symmetric, int strat_symmetric, float net_tremble_prob, float strat_tremble_prob, std::vector<int>& agent_seq, std::vector<double>& past_payoffs_p1,std::vector<double>& past_payoffs_p2)
+void one_time_step(int num_strats_p1,
+		   int num_strats_p2, 
+		   std::vector<double>& adjacency_weights, 
+		   std::vector<double>& adjacency_weights_new, 
+		   int t, 
+		   UGenerator rng, 
+		   int pop, 
+		   float p1_payoff[], 
+		   float p2_payoff[], 
+		   std::vector<double>& p1_strategy, 
+		   std::vector<double>& p1_strategy_new, 
+		   std::vector<double>& p2_strategy, 
+		   std::vector<double>& p2_strategy_new, 
+		   long int& total_p1, 
+		   long int& total_p2, 
+		   float base, 
+		   float net_discount, 
+		   float strat_discount, 
+		   float net_learning_speed, 
+		   float strat_learning_speed, 
+		   int net_symmetric, 
+		   int strat_symmetric, 
+		   float net_tremble_prob, 
+		   float strat_tremble_prob, 
+		   std::vector<int>& agent_seq, 
+		   std::vector<double>& past_payoffs_p1,
+		   std::vector<double>& past_payoffs_p2
+		   )
 /* Run simulation for one time step.  Loops through all agents.  Agents interact randomly with neighbors according to
  the link weight between them and each neighbor.  Once an interaction occurs, the links are updated according to some rule.
  Further, agent types are updated according to a given payoff matrix (UL, UR, BL, BR)
